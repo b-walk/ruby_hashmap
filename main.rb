@@ -3,7 +3,10 @@
 require_relative 'lib/hash_map'
 
 hash_map = HashMap.new
-p hash_map.buckets
+puts "Buckets -> #{hash_map.buckets}"
 
-p hash_map.hash('blake walker')
-p hash_map.hash('blaek wakler')
+hash_map.set('blake walker', '22')
+hash_map.set('blaek wakler', '22')
+hash_map.set('sky', 'blue')
+
+puts "Capacity -> #{hash_map.capacity}"
