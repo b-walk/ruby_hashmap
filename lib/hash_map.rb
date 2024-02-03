@@ -3,8 +3,8 @@
 class HashMap
   attr_reader :buckets, :load_factor
 
-  def initialize(size = 16, load_factor = 0.75)
-    @buckets = Array.new(size) { [] }
+  def initialize(load_factor = 0.75)
+    @buckets = Array.new(16) { [] }
     @load_factor = load_factor
   end
 
