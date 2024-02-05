@@ -26,7 +26,7 @@ class HashMap
     buckets.size
   end
 
-  private
+  # private
 
   def hash(string)
     hash_code = 0
@@ -39,5 +39,13 @@ class HashMap
     raise IndexError if i.negative? || i >= capacity
 
     buckets[i]
+  end
+
+  def full_buckets
+    buckets.reject {|bucket| bucket.empty?}
+  end
+
+  def max_buckets?
+    full_buckets.size >= load_factor * capacity
   end
 end
