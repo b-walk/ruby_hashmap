@@ -3,12 +3,14 @@
 require_relative 'lib/hash_map'
 
 hash_map = HashMap.new
-puts "Buckets -> #{hash_map.buckets}"
 
 hash_map.set('grass', 'green')
 hash_map.set('shoes', 'white')
 hash_map.set('sky', 'blue')
+hash_map.set('clothes', 'purple')
+hash_map.set('robes', 'purple')
+hash_map.set('cartridge', 'orange')
+hash_map.set('car', 'beige')
+hash_map.set('eyes', 'blue')
 
-puts "Capacity -> #{hash_map.capacity}"
-puts "Buckets -> #{hash_map.buckets}"
-puts "Full Buckets -> #{hash_map.full_buckets}"
+hash_map.print_details

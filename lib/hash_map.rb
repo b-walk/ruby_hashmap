@@ -8,15 +8,16 @@ class HashMap
     @load_factor = load_factor
   end
 
+  Node = Struct.new(:key, :value)
+
   def set(key, value)
     bucket = bucket_at(key)
-    node = [key, value]
 
-    match = bucket.assoc(key)
+    match = bucket.find {|node| node.key == key}
     if match
-      match.replace(node)
+      match.value = value
     else
-      bucket << node
+      bucket << Node.new(key, value)
     end
 
     # TODO: add method that grows and rehashes buckets once a threshold is reached
@@ -47,5 +48,14 @@ class HashMap
 
   def max_buckets?
     full_buckets.size >= load_factor * capacity
+  end
+
+  def print_details
+    [
+      "BUCKETS -> #{buckets}",
+      "CAPACITY -> #{capacity}",
+      "FULL_BUCKETS -> #{full_buckets}",
+      "MAX_BUCKETS? -> #{max_buckets?}"
+    ].each {|detail| puts detail, "\n"}
   end
 end
