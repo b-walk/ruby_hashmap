@@ -29,6 +29,15 @@ class HashMap
     !matching_node(key).nil?
   end
 
+  def remove(key)
+    node = matching_node(key)
+    value = node ? node.value : nil
+
+    bucket_at(key).delete_if {|node| node.key == key}
+    
+    value
+  end
+
   def print_details
     [
       "BUCKETS -> #{buckets}",

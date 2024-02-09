@@ -37,3 +37,8 @@ puts hash_map.get('jungle') # => nil
 puts hash_map.has('LEGOS') # => true
 puts hash_map.has('mannequin head') # => true
 puts hash_map.has('dessert') # => false
+
+puts hash_map.remove('sky') # => blue
+puts hash_map.remove('Amulet of Kings') # => red
+
+hash_map.print_details
