@@ -38,11 +38,20 @@ class HashMap
     value
   end
 
+  def length
+    counter = 0
+    full_buckets.each do |bucket|
+      counter += bucket.length
+    end
+    counter
+  end
+
   def print_details
     [
       "BUCKETS -> #{buckets}",
       "BUCKETS / CAPACITY -> #{full_buckets.size} / #{capacity}",
       "FULL_BUCKETS -> #{full_buckets}",
+      "LENGTH -> #{length}"
     ].each {|detail| puts detail, "\n"}
   end
 
