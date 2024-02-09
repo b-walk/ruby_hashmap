@@ -20,14 +20,24 @@ class HashMap
       bucket << Node.new(key, value)
     end
 
-    # TODO: add method that grows and rehashes buckets once a threshold is reached
+    grow_and_rehash if max_buckets?
   end
+
+  def print_details
+    [
+      "BUCKETS -> #{buckets}",
+      "BUCKETS / CAPACITY -> #{full_buckets.size} / #{capacity}",
+      "FULL_BUCKETS -> #{full_buckets}",
+    ].each {|detail| puts detail, "\n"}
+  end
+
+  private
+
+  attr_writer :buckets
 
   def capacity
     buckets.size
   end
-
-  # private
 
   def hash(string)
     hash_code = 0
@@ -50,12 +60,13 @@ class HashMap
     full_buckets.size >= load_factor * capacity
   end
 
-  def print_details
-    [
-      "BUCKETS -> #{buckets}",
-      "CAPACITY -> #{capacity}",
-      "FULL_BUCKETS -> #{full_buckets}",
-      "MAX_BUCKETS? -> #{max_buckets?}"
-    ].each {|detail| puts detail, "\n"}
+  def grow_and_rehash
+    saved_nodes = []
+    full_buckets.each do |bucket|
+      bucket.each {|node| saved_nodes << node}
+    end
+
+    @buckets = Array.new(capacity * 2) { [] }
+    saved_nodes.each {|node| set(node.key, node.value)}
   end
 end
