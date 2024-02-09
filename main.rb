@@ -30,3 +30,6 @@ hash_map.set('Amulet of Kings', 'red')
 hash_map.set('ruby', 'red')
 
 hash_map.print_details
+
+puts hash_map.get('toothbrush') # => multi
+puts hash_map.get('jungle') # => nil

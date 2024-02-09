@@ -23,6 +23,13 @@ class HashMap
     grow_and_rehash if max_buckets?
   end
 
+  def get(key)
+    bucket = bucket_at(key)
+
+    match = bucket.find {|node| node.key == key}
+    match.value if match
+  end
+
   def print_details
     [
       "BUCKETS -> #{buckets}",
