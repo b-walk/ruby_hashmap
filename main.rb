@@ -33,3 +33,7 @@ hash_map.print_details
 
 puts hash_map.get('toothbrush') # => multi
 puts hash_map.get('jungle') # => nil
+
+puts hash_map.has('LEGOS') # => true
+puts hash_map.has('mannequin head') # => true
+puts hash_map.has('dessert') # => false

@@ -11,23 +11,22 @@ class HashMap
   Node = Struct.new(:key, :value)
 
   def set(key, value)
-    bucket = bucket_at(key)
-
-    match = bucket.find {|node| node.key == key}
-    if match
+    if matching_node(key)
       match.value = value
     else
-      bucket << Node.new(key, value)
+      bucket_at(key) << Node.new(key, value)
     end
 
     grow_and_rehash if max_buckets?
   end
 
   def get(key)
-    bucket = bucket_at(key)
+    node = matching_node(key)
+    node.value if node
+  end
 
-    match = bucket.find {|node| node.key == key}
-    match.value if match
+  def has(key)
+    !matching_node(key).nil?
   end
 
   def print_details
@@ -41,6 +40,10 @@ class HashMap
   private
 
   attr_writer :buckets
+
+  def matching_node(key)
+    bucket_at(key).find {|node| node.key == key}
+  end
 
   def capacity
     buckets.size
