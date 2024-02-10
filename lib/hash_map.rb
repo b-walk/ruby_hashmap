@@ -46,6 +46,10 @@ class HashMap
     counter
   end
 
+  def clear
+    buckets.map(&:clear)
+  end
+
   def print_details
     [
       "BUCKETS -> #{buckets}",

@@ -42,3 +42,7 @@ puts hash_map.remove('sky') # => blue
 puts hash_map.remove('Amulet of Kings') # => red
 
 hash_map.print_details
+
+hash_map.clear
+
+hash_map.print_details
