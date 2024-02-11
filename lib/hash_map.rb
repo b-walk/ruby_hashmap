@@ -39,15 +39,19 @@ class HashMap
   end
 
   def length
-    counter = 0
-    full_buckets.each do |bucket|
-      counter += bucket.length
-    end
-    counter
+    keys.size
   end
 
   def clear
     buckets.map(&:clear)
+  end
+
+  def keys
+    key_array = []
+    buckets.each do |bucket|
+      bucket.each {|node| key_array << node.key}
+    end
+    key_array
   end
 
   def print_details
@@ -55,7 +59,8 @@ class HashMap
       "BUCKETS -> #{buckets}",
       "BUCKETS / CAPACITY -> #{full_buckets.size} / #{capacity}",
       "FULL_BUCKETS -> #{full_buckets}",
-      "LENGTH -> #{length}"
+      "LENGTH -> #{length}",
+      "KEYS -> #{keys}"
     ].each {|detail| puts detail, "\n"}
   end
 
