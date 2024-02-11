@@ -54,6 +54,14 @@ class HashMap
     key_array
   end
 
+  def values
+    value_array = []
+    buckets.each do |bucket|
+      bucket.each {|node| value_array << node.value}
+    end
+    value_array
+  end
+
   def print_details
     [
       "BUCKETS -> #{buckets}",
