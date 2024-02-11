@@ -8,8 +8,6 @@ class HashMap
     @load_factor = load_factor
   end
 
-  Node = Struct.new(:key, :value)
-
   def set(key, value)
     if matching_node(key)
       match.value = value
@@ -62,19 +60,36 @@ class HashMap
     value_array
   end
 
+  def entries
+    pairs = []
+    nodes.each {|node| pairs << node.pair}
+    pairs
+  end
+
   def print_details
     [
       "BUCKETS -> #{buckets}",
       "BUCKETS / CAPACITY -> #{full_buckets.size} / #{capacity}",
       "FULL_BUCKETS -> #{full_buckets}",
       "LENGTH -> #{length}",
-      "KEYS -> #{keys}"
+      "KEYS -> #{keys}",
+      "VALUES -> #{values}",
+      "ENTRIES -> #{entries}"
     ].each {|detail| puts detail, "\n"}
   end
 
   private
 
   attr_writer :buckets
+
+  def nodes
+    node_array = []
+    buckets.each do |bucket|
+      next if bucket.empty?
+      bucket.each {|node| node_array << node}
+    end
+    node_array
+  end
 
   def matching_node(key)
     bucket_at(key).find {|node| node.key == key}

@@ -2,6 +2,7 @@
 
 require 'pry-byebug'
 
+require_relative 'lib/node'
 require_relative 'lib/hash_map'
 
 hash_map = HashMap.new
