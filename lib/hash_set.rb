@@ -8,8 +8,6 @@ class HashSet < HashStructure
   end
 
   def has(key)
-    buckets.any? do |bucket|
-      bucket.include?(key)
-    end
+    bucket_at(key).include?(key)
   end
 end
