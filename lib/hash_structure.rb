@@ -12,6 +12,10 @@ class HashStructure
     buckets.map(&:clear)
   end
 
+  def length
+    buckets.reduce(0) {|sum, bucket| sum + bucket.size}
+  end
+
   private
 
   attr_writer :buckets

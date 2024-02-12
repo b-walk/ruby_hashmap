@@ -38,10 +38,6 @@ class HashMap < HashStructure
     value
   end
 
-  def length
-    
-  end
-
   def keys
     key_array = []
     buckets.each do |bucket|
