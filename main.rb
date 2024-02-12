@@ -4,6 +4,9 @@ require 'pry-byebug'
 
 require_relative 'lib/node'
 require_relative 'lib/hash_map'
+require_relative 'lib/hash_set'
+
+# HASH MAP
 
 hash_map = HashMap.new
 
@@ -47,3 +50,16 @@ hash_map.print_details
 hash_map.clear
 
 hash_map.print_details
+
+# HASH SET
+
+hash_set = HashSet.new
+
+hash_set.set('Jimmy Neutron')
+hash_set.set('Sheen Estevez')
+hash_set.set('Carl Wheezer')
+hash_set.set('Bolbi Stroganofsky')
+hash_set.set('Libby Folfax')
+hash_set.set('Cindy Vortex')
+hash_set.set('Goddard')
+p hash_set.buckets
