@@ -10,4 +10,8 @@ class HashSet < HashStructure
   def has(key)
     bucket_at(key).include?(key)
   end
+
+  def remove(key)
+    bucket_at(key).delete(key)
+  end
 end

@@ -68,3 +68,8 @@ p hash_set.buckets
 puts hash_set.has('Goddard') # => true
 puts hash_set.has('Jimmy Neutron') # => true
 puts hash_set.has('Hugh Neutron') # => false
+
+puts hash_set.remove('Bolbi Stroganofsky') # => Bolbi Stroganofsky
+puts hash_set.remove('Hugh Neutron') # => nil
+
+p hash_set.buckets
