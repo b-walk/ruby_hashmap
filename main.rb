@@ -62,4 +62,9 @@ hash_set.set('Bolbi Stroganofsky')
 hash_set.set('Libby Folfax')
 hash_set.set('Cindy Vortex')
 hash_set.set('Goddard')
+
 p hash_set.buckets
+
+puts hash_set.has('Goddard') # => true
+puts hash_set.has('Jimmy Neutron') # => true
+puts hash_set.has('Hugh Neutron') # => false
