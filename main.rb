@@ -75,3 +75,4 @@ puts hash_set.remove('Hugh Neutron') # => nil
 p hash_set.buckets
 
 puts hash_set.length
+p hash_set.keys

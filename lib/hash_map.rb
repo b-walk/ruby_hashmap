@@ -39,19 +39,15 @@ class HashMap < HashStructure
   end
 
   def keys
-    key_array = []
-    buckets.each do |bucket|
-      bucket.each {|node| key_array << node.key}
+    buckets.reduce([]) do |key_array, bucket|
+      bucket.reduce(key_array) {|_key_array, node| _key_array << node.key}
     end
-    key_array
   end
 
   def values
-    value_array = []
-    buckets.each do |bucket|
-      bucket.each {|node| value_array << node.value}
+    buckets.reduce([]) do |key_array, bucket|
+      bucket.reduce(key_array) {|_key_array, node| _key_array << node.value}
     end
-    value_array
   end
 
   def entries
